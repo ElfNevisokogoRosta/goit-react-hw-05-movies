@@ -9,7 +9,7 @@ export interface Film {
   title: string;
 }
 
-export const Home = () => {
+export const Home: React.FC = () => {
   const [page, setPage] = useState<number>(1);
   const [popular, setPopular] = useState<Film[]>([]);
   const [loading, error, response, totalPages] = usePopular(page);
@@ -37,7 +37,7 @@ export const Home = () => {
           })}
       </FilmList>
 
-      {page < totalPages && <Btn onClick={handleNextPage}>1 Next Page</Btn>}
+      {page < totalPages && <Btn onClick={handleNextPage}>Next Page</Btn>}
     </Container>
   );
 };

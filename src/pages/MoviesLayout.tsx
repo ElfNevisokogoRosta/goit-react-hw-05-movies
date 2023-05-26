@@ -1,10 +1,11 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
+import { Header } from "./components/Header";
 
-export const MoviesLayout = () => {
+export const MoviesLayout: React.FC = () => {
   return (
     <div>
-      <>Navigations</>
+      <Header />
       <Outlet />
     </div>
   );
