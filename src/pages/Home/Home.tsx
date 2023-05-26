@@ -37,7 +37,7 @@ export const Home = () => {
           })}
       </FilmList>
 
-      {page < totalPages && <Btn onClick={handleNextPage}>Next Page</Btn>}
+      {page < totalPages && <Btn onClick={handleNextPage}>1 Next Page</Btn>}
     </Container>
   );
 };
