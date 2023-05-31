@@ -3,25 +3,28 @@ import { Route, Routes, Navigate } from "react-router-dom";
 import { MoviesLayout } from "./pages/MoviesLayout";
 import { Home } from "./pages/Home/Home";
 import { Movies } from "./pages/Movies/Movies";
+import { SearchResult } from "./pages/SearchResult/SearhcResult";
 import { Movie } from "./pages/Movie/Movie";
-import { Reviews } from "./pages/Reviews/Reviews";
 import { Cast } from "./pages/Cast/Cast";
+import { ReviewsPage } from "./pages/Reviews/Reviews";
+import { ErrorPage } from "./pages/ErrorPage/ErrorPage";
+
 const App: React.FC = () => {
   return (
-    <>
-      <Routes>
-        <Route path="/" element={<MoviesLayout />}>
-          <Route index element={<Home />} />
-          <Route path="/movies" element={<Movies />}>
-            <Route path="/movies/:movieId" element={<Movie />}>
-              <Route path="/movies/:movieId/cast" element={<Cast />} />
-              <Route path="/movies/:movieId/reviews" element={<Reviews />} />
-            </Route>
+    <Routes>
+      <Route path="/" element={<MoviesLayout />}>
+        <Route index element={<Home />} />
+        <Route path="/movies" element={<Movies />}>
+          <Route path="searh/:query" element={<SearchResult />} />
+          <Route path="movie/:movieID" element={<Movie />}>
+            <Route path="cast" element={<Cast />} />
+            <Route path="reviews" element={<ReviewsPage />} />
           </Route>
-          <Route path="*" element={<Navigate to="/" />} />
         </Route>
-      </Routes>
-    </>
+        <Route path="/error_page" element={<ErrorPage />} />
+        <Route path="*" element={<Navigate to="/" />} />
+      </Route>
+    </Routes>
   );
 };
 

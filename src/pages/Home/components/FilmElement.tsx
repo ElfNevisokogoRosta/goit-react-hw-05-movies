@@ -6,19 +6,32 @@ import {
   FilmElementContainer,
   FilmTitlte,
 } from "./FilmElement.styled";
+import { useNavigate } from "react-router-dom";
+import placeholder from "../../../images/placeholder.jpg";
 interface FilmElementProps {
   film: Film;
 }
-export const FilmElement: React.FC<FilmElementProps> = ({ film }) => {
+
+const FilmElement: React.FC<FilmElementProps> = ({ film }) => {
+  const navigate = useNavigate();
+  const filmHandler = (e: React.PointerEvent<HTMLLIElement>) => {
+    navigate(`/movies/movie/${film.id}`);
+  };
+
   return (
-    <FilmElementContainer>
+    <FilmElementContainer onClick={filmHandler}>
       <FilmTitlte>{film.original_name || film.title}</FilmTitlte>
       <ImgWrpaer>
-        <Img
-          src={`https://image.tmdb.org/t/p/w500${film.poster_path}`}
-          alt=""
-        />
+        {film.poster_path === null ? (
+          <Img src={placeholder} />
+        ) : (
+          <Img
+            src={`https://image.tmdb.org/t/p/w500${film.poster_path}`}
+            alt={`${film.title}-poster`}
+          />
+        )}
       </ImgWrpaer>
     </FilmElementContainer>
   );
 };
+export default FilmElement;

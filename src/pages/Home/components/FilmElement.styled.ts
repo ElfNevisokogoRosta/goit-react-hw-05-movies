@@ -26,5 +26,6 @@ const FilmTitlte = styled.h2`
 const FilmElementContainer = styled.li`
   display: flex;
   flex-direction: column;
+  cursor: pointer;
 `;
 export { Img, ImgWrpaer, FilmTitlte, FilmElementContainer };
