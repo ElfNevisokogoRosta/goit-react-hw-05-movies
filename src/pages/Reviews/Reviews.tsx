@@ -17,6 +17,8 @@ export const ReviewsPage: React.FC = () => {
   useEffect(() => {
     setReviews(result);
   }, [result]);
+  console.log(result.length);
+
   if (error) {
     navigate("/error_page");
   }
@@ -44,6 +46,7 @@ export const ReviewsPage: React.FC = () => {
           );
         })}
         {loading ? <MutatingDots /> : ""}
+        {result.length === 0 ? "No reviews for this film" : ""}
       </ReviewList>
     </div>
   );

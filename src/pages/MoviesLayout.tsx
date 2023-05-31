@@ -2,7 +2,7 @@ import React, { Suspense } from "react";
 import { Outlet } from "react-router-dom";
 import { Header } from "./components/Header";
 import { MutatingDots } from "react-loader-spinner";
-import { ToastContainer } from "react-toastify";
+
 export const MoviesLayout: React.FC = () => {
   return (
     <div>
@@ -23,7 +23,6 @@ export const MoviesLayout: React.FC = () => {
       >
         <Outlet />
       </Suspense>
-      <ToastContainer />
     </div>
   );
 };
