@@ -31,7 +31,12 @@ export const SearchForm: React.FC<SearchFormProps> = ({ onSubmit }) => {
         }}
       >
         <FormContainer>
-          <FormInput type="text" name="query" onChange={onInputChange} />
+          <FormInput
+            type="text"
+            name="query"
+            value={query}
+            onChange={onInputChange}
+          />
           <FormBtn>
             <LuPackageSearch />
           </FormBtn>
