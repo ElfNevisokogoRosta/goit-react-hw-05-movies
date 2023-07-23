@@ -1,5 +1,5 @@
 import React from "react";
-import { ReviewI } from "../../../../../utils/useReviews";
+import { ReviewI } from "../../../../../utils/interfaces";
 import {
   ReviewContainer,
   ReviewTitle,
