@@ -31,6 +31,7 @@ export const useReviews = (id: string): [boolean, boolean | {}, ReviewI[]] => {
         setError(error);
         setLoading(false);
       });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
   return [loading, error, result];
 };

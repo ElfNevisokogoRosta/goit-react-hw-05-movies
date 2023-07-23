@@ -36,6 +36,7 @@ export const useSearch = (
         setError(error);
         setLoading(false);
       });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query, page]);
   return [loading, error, result, totalPages];
 };
