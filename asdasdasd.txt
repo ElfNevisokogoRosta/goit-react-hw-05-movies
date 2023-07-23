@@ -1,0 +1,12 @@
+<Route path="/" element={<MoviesLayout />}>
+          <Route index element={<Home />} />
+          <Route path="/movies" element={<Movies />}>
+            <Route path="searh/:query" element={<SearchResult />} />
+            <Route path="movie/:movieID" element={<Movie />}>
+              <Route path="cast" element={<Cast />} />
+              <Route path="reviews" element={<ReviewsPage />} />
+            </Route>
+          </Route>
+          <Route path="/error_page" element={<ErrorPage />} />
+         
+        </Route>

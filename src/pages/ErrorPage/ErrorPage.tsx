@@ -1,5 +1,8 @@
 import React from "react";
 
-export const ErrorPage: React.FC = () => {
-  return <div>Something goin wrong</div>;
+const ErrorPage: React.FC = () => {
+  return (
+    <div>i was lazy to make text what rly happend but something is worng</div>
+  );
 };
+export default ErrorPage;
