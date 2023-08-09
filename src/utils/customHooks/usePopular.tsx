@@ -40,6 +40,7 @@ export const usePopular = (
       .catch((error) => {
         setError(error);
       });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page]);
   return [loading, error, response, totalPages];
 };

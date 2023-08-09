@@ -34,6 +34,7 @@ export const useMovie = (id: string): [boolean, boolean | {}, ResultI] => {
         setError(error);
         setLoading(false);
       });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
   return [loading, error, result];
 };
