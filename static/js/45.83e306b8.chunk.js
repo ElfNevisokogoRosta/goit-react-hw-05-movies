@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkgoit_react_hw_05_movies=self.webpackChunkgoit_react_hw_05_movies||[]).push([[45],{8045:function(t,e,i){i.r(e);i(2791);var a=i(184);e.default=function(){return(0,a.jsx)("div",{style:{marginRight:"30px"},children:"i was lazy to make text what rly happend but something is worng"})}}}]);
+//# sourceMappingURL=45.83e306b8.chunk.js.map
