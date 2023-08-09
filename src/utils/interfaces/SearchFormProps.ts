@@ -1,7 +1,7 @@
-import { SetStateAction } from "react";
+import { SetURLSearchParams } from "react-router-dom";
 interface SearchFormProps {
   onSubmit: (
-    func: (arg0: string, arg1: React.Dispatch<SetStateAction<string>>) => void
+    func: (arg0: URLSearchParams, arg1: SetURLSearchParams) => void
   ) => void;
 }
 export default SearchFormProps;

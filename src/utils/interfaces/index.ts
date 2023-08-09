@@ -10,3 +10,4 @@ export type { default as LoadMoreBtnProps } from "./LoadMoreBtnProps";
 export type { default as CastCardProps } from "./CastCardProps";
 export type { default as SearchResultsProps } from "./SearchResultProps";
 export type { default as SearchFormProps } from "./SearchFormProps";
+export type { default as PrevLinkProps } from "./PrevLink";

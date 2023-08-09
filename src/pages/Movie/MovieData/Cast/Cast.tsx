@@ -26,8 +26,8 @@ const Cast: React.FC = () => {
   return (
     <div>
       <CastList>
-        {res.map((actor: CastI) => (
-          <CastCard actor={actor} />
+        {res.map((actor: CastI, id) => (
+          <CastCard key={`${actor.id}-${id}`} actor={actor} />
         ))}
         {loading && <Loader />}
       </CastList>

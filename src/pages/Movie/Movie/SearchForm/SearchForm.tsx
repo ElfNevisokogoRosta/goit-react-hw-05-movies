@@ -1,4 +1,4 @@
-import React, { SetStateAction, useState } from "react";
+import React, { useState } from "react";
 import { LuPackageSearch } from "react-icons/lu";
 import {
   FormContainer,
@@ -7,6 +7,7 @@ import {
   SearchFormStyled,
 } from "./SearchForm.styled";
 import { SearchFormProps } from "../../../../utils/interfaces";
+import { SetURLSearchParams } from "react-router-dom";
 
 export const SearchForm: React.FC<SearchFormProps> = ({ onSubmit }) => {
   const [query, setQuery] = useState<string>("");
@@ -16,11 +17,8 @@ export const SearchForm: React.FC<SearchFormProps> = ({ onSubmit }) => {
   const onFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
   };
-  const sendQuery = (
-    state: string,
-    setState: React.Dispatch<SetStateAction<string>>
-  ) => {
-    setState(query);
+  const sendQuery = (state: URLSearchParams, setState: SetURLSearchParams) => {
+    setState({ query: query });
   };
   return (
     <FormContainer>
@@ -32,7 +30,7 @@ export const SearchForm: React.FC<SearchFormProps> = ({ onSubmit }) => {
       >
         <FormContainer>
           <FormInput
-            type="text"
+            type="search"
             name="query"
             value={query}
             onChange={onInputChange}

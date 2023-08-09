@@ -1,21 +1,27 @@
-import React, { SetStateAction, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { SearchForm } from "./SearchForm/SearchForm";
 import { SearchResults } from "./SearchResults/SearchResults";
 import { MovieI } from "../../../utils/interfaces";
 import { useSearch } from "../../../utils/customHooks/useSearch";
 import { LoadMoreBtn } from "../../MoviesHome/components/LoadMoreBTN/LoadMoreBtn";
 import { Loader } from "../../../components/Loader";
-import { useNavigate } from "react-router-dom";
+import {
+  SetURLSearchParams,
+  useNavigate,
+  useSearchParams,
+} from "react-router-dom";
 
 const Movie: React.FC = () => {
-  const [query, setQuery] = useState<string>("");
   const [response, setResponse] = useState<MovieI[]>([]);
   const [page, setPage] = useState<number>(1);
-  const [loading, error, result, totalPages] = useSearch(query, page);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const searchQuery = searchParams.get("query") ?? " ";
+  const [loading, error, result, totalPages] = useSearch(searchQuery, page);
   const navigate = useNavigate();
-  useEffect(() => {
-    setResponse([]);
-  }, [query]);
+  // useEffect(() => {
+  //   setSearchParams({ query: query });
+  //   setResponse([]);
+  // }, [query]);
   useEffect(() => {
     const res = result.map(
       (film: { id: number; title: string; poster_path: string }) => ({
@@ -27,9 +33,9 @@ const Movie: React.FC = () => {
     setResponse((prevState) => [...prevState, ...res]);
   }, [result]);
   const onSearhQuery = (
-    func: (arg0: string, arg1: React.Dispatch<SetStateAction<string>>) => void
+    func: (arg0: URLSearchParams, arg1: SetURLSearchParams) => void
   ) => {
-    func(query, setQuery);
+    func(searchParams, setSearchParams);
   };
   const nextPage = (
     func: (
@@ -42,6 +48,7 @@ const Movie: React.FC = () => {
   if (error) {
     navigate("/error");
   }
+
   return (
     <>
       <SearchForm onSubmit={onSearhQuery} />

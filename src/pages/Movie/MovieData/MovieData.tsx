@@ -1,5 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { NavLink, Outlet, useNavigate, useParams } from "react-router-dom";
+import React, { useEffect, useRef, useState } from "react";
+import {
+  NavLink,
+  Outlet,
+  useLocation,
+  useNavigate,
+  useParams,
+} from "react-router-dom";
 import { useMovie } from "../../../utils/customHooks/useMoive";
 import DetailsI from "../../../utils/interfaces/DetailsI";
 import {
@@ -17,6 +23,7 @@ import {
 } from "./MovieData.styled";
 import { Container } from "../../MoviesHome/MovieHome.styled";
 import { Loader } from "../../../components/Loader";
+import { PrevLink } from "../../../components/PrevLink";
 const placeholder = require("../../../images/placeholder.jpg");
 
 const MovieData: React.FC = () => {
@@ -43,13 +50,16 @@ const MovieData: React.FC = () => {
   if (error) {
     navigate("/error");
   }
+  const location = useLocation();
+  const prevAdressRef = useRef(location);
+  console.log(prevAdressRef);
   return (
     <Container>
       <div>
         {loading && <Loader />}
+        <PrevLink state={prevAdressRef && prevAdressRef.current} />
         <MovieTitle>{movie && movie.title}</MovieTitle>
         <MovieDetailsContainer>
-          {" "}
           <ImgWrpaer>
             <Img
               src={
@@ -66,8 +76,8 @@ const MovieData: React.FC = () => {
             <OverviewDis>{movie.overview}</OverviewDis>
             <Genres>
               {" "}
-              {movie.genre.map((genre: { name: string }) => (
-                <li>{genre.name}</li>
+              {movie.genre.map((genre: { name: string }, id) => (
+                <li key={`${genre.name}-${id}`}>{genre.name}</li>
               ))}
             </Genres>
           </DetailsContainer>
